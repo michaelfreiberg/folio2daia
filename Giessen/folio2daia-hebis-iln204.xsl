@@ -1085,14 +1085,26 @@
         <xsl:for-each
             select="holdings/holding[(holdingsTypeId != '996f93e2-5b5e-4cf2-9168-33ced1f95eed') and not(xs:boolean(discoverySuppress))]">
             <!-- für nicht elektronische Bestände -->
-            <xsl:sort select="if(../instance/natureOfContentTermIds = 'ebbbdef1-00e1-428b-bc11-314dc0705074' or
-                ../instance/natureOfContentTermIds = '0abeee3d-8ad2-4b04-92ff-221b4fce1075') then                
-                                index-of(('ILN204/CG/UB/UBMagKeller', 'ILN204/CG/UB/UBMag3', 'ILN204/CG/UB/UBMagPohlheim'),
-                                         effectiveLocation/code)
-                              else
-                                effectiveLocation/code" order="ascending" lang="de"/>
             <xsl:sort select="index-of(('holdingsStatements'),name())" order="ascending" lang="de"/>
+            <xsl:sort select="if(substring(../../instance/administrativeNotes[contains(text(),'Bibliografische Gattung')], 1, 2) = 'Ab') then 
+                                if(number(index-of(('ILN204/CG/UB/UBMagKeller', 'ILN204/CG/UB/UBMag3', 'ILN204/CG/UB/UBMagPohlheim'), effectiveLocation/code)))
+                                    then
+                                        index-of(('ILN204/CG/UB/UBMagKeller', 'ILN204/CG/UB/UBMag3', 'ILN204/CG/UB/UBMagPohlheim'), effectiveLocation/code)
+                                    else 
+                                        9
+                              else
+                                effectiveLocation/code" order="ascending" lang="de"/>            
             <xsl:sort select="callNumber" order="ascending" lang="de"/>
+<!--            <xsl:text>&#xA;DAIAinfo aus_text DEBUG: </xsl:text>
+            <xsl:copy-of select="if(substring(../../instance/administrativeNotes[contains(text(),'Bibliografische Gattung')], 1, 2) = 'Ab') then 
+                if(number(index-of(('ILN204/CG/UB/UBMagKeller', 'ILN204/CG/UB/UBMag3', 'ILN204/CG/UB/UBMagPohlheim'), effectiveLocation/code)))
+                    then
+                        index-of(('ILN204/CG/UB/UBMagKeller', 'ILN204/CG/UB/UBMag3', 'ILN204/CG/UB/UBMagPohlheim'), effectiveLocation/code)                
+                    else 
+                        '999'
+                else
+                effectiveLocation/code"/>
+            <xsl:text> ofniAIAD</xsl:text>-->
             <xsl:if test="not(items/item)">
                 <xsl:apply-templates select="./hrid|./notes/note|./effectiveLocation/discoveryDisplayName">
                     <xsl:sort select="index-of(('hrid'),name())" order="descending"/>
