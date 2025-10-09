@@ -352,6 +352,7 @@
             <ind>g nicht_ausleihbar</ind>
             <n xml:lang="de">ZwBibl. im Phil. II F</n>
             <url>https://www.uni-giessen.de/ub/de/ueber-uns/standorte/ub-db/bik?bik=009</url>
+            <map linktype="zp2semapp"/>
         </e>
         <e>
             <c>ILN204/CG/DezFB/Pathologie</c>
@@ -1161,6 +1162,9 @@
                     <xsl:when test="$map/@linktype = 'semapp'">
                         <xsl:call-template name="semapp"/>
                     </xsl:when>
+                    <xsl:when test="$map/@linktype = 'zp2semapp'">
+                        <xsl:call-template name="zp2semapp"/>
+                    </xsl:when>
                 </xsl:choose>
             </xsl:for-each>
         </xsl:for-each>
@@ -1713,6 +1717,13 @@
                 <xsl:text>&lt;/b&gt;&lt;/a&gt;</xsl:text>
             </xsl:with-param>
         </xsl:call-template>
+        <xsl:call-template name="DAIA">
+            <xsl:with-param name="tag">aus_text</xsl:with-param>
+            <xsl:with-param name="value">Semesterapparat</xsl:with-param>
+        </xsl:call-template>
+    </xsl:template>
+
+    <xsl:template name="zp2semapp">
         <xsl:call-template name="DAIA">
             <xsl:with-param name="tag">aus_text</xsl:with-param>
             <xsl:with-param name="value">Semesterapparat</xsl:with-param>
