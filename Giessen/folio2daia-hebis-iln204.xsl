@@ -715,7 +715,7 @@
         <hap nr="hap10117074">Prof. Reimer</hap>
         <hap nr="hap10117075">Prof. Adolphsen</hap>
         <hap nr="hap10117076">Prof. Walker</hap>
-        <hap nr="hap10117077">Prof. Ekkenga</hap>
+        <hap nr="hap10117077">Prof. Holle</hap>
         <hap nr="hap10117078">Prof. Dubovitskaya</hap>
         <hap nr="hap10117079">Prof. Gutzeit</hap>
         <hap nr="hap10117080">Prof. Keiser</hap>
