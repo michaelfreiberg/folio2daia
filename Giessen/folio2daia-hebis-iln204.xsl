@@ -1163,9 +1163,6 @@
                     <xsl:when test="$map/@linktype = 'semapp'">
                         <xsl:call-template name="semapp"/>
                     </xsl:when>
-                    <xsl:when test="$map/@linktype = 'zp2semapp'">
-                        <xsl:call-template name="zp2semapp"/>
-                    </xsl:when>
                 </xsl:choose>
             </xsl:for-each>
         </xsl:for-each>
