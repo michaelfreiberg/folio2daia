@@ -352,7 +352,7 @@
             <ind>g nicht_ausleihbar</ind>
             <n xml:lang="de">ZwBibl. im Phil. II F</n>
             <url>https://www.uni-giessen.de/ub/de/ueber-uns/standorte/ub-db/bik?bik=009</url>
-            <map linktype="zp2semapp"/>
+            <map linktype="semapp"/>
         </e>
         <e>
             <c>ILN204/CG/DezFB/Pathologie</c>
@@ -769,7 +769,7 @@
         <hap nr="hap10329997">F&#xf6;rderwerkstatt d. Abt. Sprachheilp&#xe4;dagogik</hap>
         <hap nr="hap10329998">Bildungswerkstatt</hap>
         <hap nr="hap10329999">Didaktische Lernwerkstatt / Arbeitsstelle f&#xfc;r Inklusion</hap>
-        <hap nr="hap10330101">Diathek / Herr Dr. Steinm&#xfc;ller</hap>
+        <hap nr="hap10330101">Diathek</hap>
         <hap nr="hap10330170">Prof. Buschk&#xfc;hle</hap>
         <hap nr="hap10330171">Prof. Schnurr</hap>
         <hap nr="hap10330173">Prof. Schepers</hap>
@@ -791,8 +791,8 @@
         <hap nr="hap10470170">SFB Erinnerungskulturen, Islamwissenschaft</hap>
         <hap nr="hap10470171">Prof. Kirchner</hap>
         <hap nr="hap10470172">Prof. Sarikaya</hap>
-        <hap nr="hap10470174">Prof. Cakir-Mattner</hap>
-        <hap nr="hap10490170">Prof. Oezmen</hap>
+        <hap nr="hap10470174">Prof. C\,akir-Mattner</hap>
+        <hap nr="hap10490170">Prof. \Oezmen</hap>
         <hap nr="hap10510113">Arbeitsstelle Holocaustliteratur</hap>
         <hap nr="hap10510170">Prof. Voeste</hap>
         <hap nr="hap10510171">Prof. Hennig</hap>
@@ -811,6 +811,7 @@
         <hap nr="hap10520173">Prof. Olson</hap>
         <hap nr="hap10520174">Prof. Rostek</hap>
         <hap nr="hap10520176">Prof. Luo</hap>
+        <hap nr="hap10520178">Prof. Steininger</hap>
         <hap nr="hap10530170">Prof. Ladilova</hap>
         <hap nr="hap10530171">Prof. Seiler</hap>
         <hap nr="hap10530174">Prof. Dolle</hap>
@@ -1717,13 +1718,6 @@
                 <xsl:text>&lt;/b&gt;&lt;/a&gt;</xsl:text>
             </xsl:with-param>
         </xsl:call-template>
-        <xsl:call-template name="DAIA">
-            <xsl:with-param name="tag">aus_text</xsl:with-param>
-            <xsl:with-param name="value">Semesterapparat</xsl:with-param>
-        </xsl:call-template>
-    </xsl:template>
-
-    <xsl:template name="zp2semapp">
         <xsl:call-template name="DAIA">
             <xsl:with-param name="tag">aus_text</xsl:with-param>
             <xsl:with-param name="value">Semesterapparat</xsl:with-param>

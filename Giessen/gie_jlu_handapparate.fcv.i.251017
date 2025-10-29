@@ -1,0 +1,706 @@
+/*
+** Datei : gie_jlu_handapparate.fcv.i.251017
+**
+** Inhalt: Tabellen-Definition: table jlu_handapparate
+**
+** Zweck : Mittels der table 'jlu_handapparate' erfolgt bei der
+**         Praesentation der Lokaldaten die Umsetzung von Handapparat-Codes
+**         aus #209G/XY   in HTML-Hyperlinks: Anstelle von  wird
+**         jlu_handapparate() angezeigt.
+**
+** Aenderungs-Log (neue Eintraege bitte  o b e n  anfuegen!):
+**
+**  Datum   : Name : Art der Aenderung
+** ================================================================================================
+** 17.10.25 :  CP  : hap10330101 (Steinmüller gelöscht)
+**					 hap10520178 neu: Steininger
+** 13.10.25 :  CP  : hap10117077 Holle (alt: Ekkenga)
+** 26.09.25 :  CP  : hap10720170 Elm (alt: Eickhoff)
+** 25.09.25 :  CP  : hap10910174 neu: Kopp
+** 16.09.25 :  CP  : hap10310175 neu: Daphi
+** 22.08.25 :  CP  : hap10617076 Bardach (alt: Schöne)
+** 21.08.25 :  CP  : hap10730175 Wittlich (alt: Mehren)
+** 28.07.25 :  CP  : Adressdaten geloescht (werden nur noch ueber BibVerz gepflegt)
+** 25.07.25 :  CP  : hap12900001 Zfl (korr. Adresse)
+**                   hap62000539 ZfbK (korr. Adresse)
+**                   hap62700561 ZfbK (korr. Adresse)
+** 13.06.25 :  CP  : hap10820275 neu: Lepple
+** 11.06.25 :  CP  : hap10810871 Muench (alt: Lakes-Harlan)
+** 21.05.25 :  CP  : hap10530170 Ladilova (alt: Born)
+** 24.04.25 :  CP  : hap10320375 Hinzke (korr. Adresse)
+**                   hap10320176 Braun (korr. Adresse)
+** 09.04.25 :  CP  : hap10310178 neu: Schwindenhammer
+** 20.03.25 :  CP  : hap10510374 neu: Madlener-Charpentier
+** 03.02.25 :  CP  : hap10710277 neu: Dobs
+** 21.10.24 :  CP  : hap10910812 neu: Golicz
+** 15.10.24 :  CP  : hap10310279 neu: Klapeer
+** 14.10.24 :  CP  : hap10710276 neu: Wendlandt
+** 13.09.24 :  CP  : hap10920470 Bräunig (korr. Adresse)
+**				   : hap10910873 neu: Schießl-Weidenweber	
+** 07.06.24 :  CP  : hap10710274 Kaiser (korr.)
+** 24.05.24 :  CP  : hap10810572 Hake
+**				   : hap10810573 Braun
+**                 : hap10217093 Kurz
+** 23.01.24 :  CP  : hap10810784 Poppenborg Martin
+** 04.01.24 :  CP  : hap10617170 de Haas
+** 29.11.23 :  CP  : hap10520176 Luo
+** 28.09.23 :  CP  : hap10320375 Hinzke
+** 22.09.23 :  CP  : hap10617076 Schoene (alt: Stiensmeier)
+**					 hap10510371 Dube (alt: Gansel)
+**					 hap10720273 geloescht (Düren)
+**					 hap10910171 geloescht (Schmitz)
+**                   hap10910201 geloescht (Agrarsoziologie)
+**					 hap10910371 geloescht (Harrach)
+**					 hap10911070 geloescht (Kogel)
+**					 hap10920371 geloescht (Weigand)
+** 15.09.23 :  CP  : hap10811070 neu: Zeidler
+** 06.09.23 :  CP  : hap10920271 Santner (alt: Schubert)
+**                   hap10117088 geloescht (Europarecht)
+**					 hap62300114 geloescht (Eissel)
+**					 hap62000280 geloescht (Friese)
+**					 hap10310174 geloescht (Greschke)
+**					 hap62200371 geloescht (Gronemeyer, AIDS)
+**					 hap62700102 geloescht (Gronemeyer, Hospiz)
+**					 hap10310273 geloescht (Holland-Cunz)
+**					 hap10310178 geloescht (Hornig)
+**					 hap10320274 geloescht (Adl-Amini)
+**					 hap10320372 geloescht (Andersen)
+**					 hap10310279 geloescht (Dhawan)
+**					 hap10340174 geloescht (Phleps)
+** 					 hap10310370 geloescht (Sander)
+**					 hap10320373 geloescht (Wissinger)
+**					 hap10310175 geloescht (Neckel)
+**					 hap60000192 geloescht (Neckel, Medien)
+**					 hap62200656 geloescht (Neckel, CyberCrash)
+** 					 hap62200729 geloescht (Schmidt)		 
+**					 hap10310170 geloescht (Willems)
+**					 hap10430174 geloescht (Landfrieden)
+**					 hap10437999 geloescht (Alte Geschichte, Sep.)
+**					 hap10447170 geloescht (Baumgartner)
+**					 hap10420170 geloescht (Hauser)
+**					 hape0530172 geloescht (Rieger)
+**					 hap10480173 geloescht (Rohdewald)
+**					 hap63700212 geloescht (Identitaetsstiftung)
+**					 hap10510112 geloescht (Sudetendt. WB)
+**					 hap10519999 geloescht (Rezat)
+**					 hap10520172 geloescht (Borgmeier)
+**					 hap10550170 geloescht (Goebbels)
+**					 hap10530176 geloescht (Prinz)
+**					 hap63201122 geloescht (Geschichtsatlanten)
+**					 hap10617087 geloescht (Ennemoser)
+**					 hap10617089 geloescht (Glaser)
+**					 hap10617075 geloescht (Glowalla)
+**					 hap10617091 geloescht (Entwicklungsf.)
+**					 hap10617096 geloescht (Rubel)
+**					 hap10618080 geloescht (Vaitl, BION)
+**					 hape0617080 geloescht (Vaitl)
+**					 hap62000262 geloescht (Faili)
+**					 hap10710176 geloescht (Haeusler)
+**					 hap10720175 geloescht (Mitic)
+**					 hap10720571 geloescht (Vorholzer
+**					 hap10720670 geloescht (Mueller, IAMP)
+**					 hap10710301 geloescht (Did. Mathem.)
+**					 hap10710184 geloescht (Horn)
+**					 hap10710180 geloescht (Walther)
+**					 hap10811070 geloescht (Hughes)
+**					 hap10911171 geloescht (Erhardt)
+**					 hap11010170 geloescht (Bergmann)
+**					 hap11011170 geloescht (Neiger)
+**					 hap11010999 geloescht (Ziegler)
+**					 hap62000489 geloescht (HRZ, Weiterbildung)
+**					 hap20310199 geloescht (HRZ, KOMM)
+**					 hap13200001 geloescht (Gender Studies)
+**					 hap13500070 geloescht (ZfbK, Goepferich)
+**					 hap20110201 geloescht (ZIL)
+**					 hap60000226 geloescht (Leggewie, BiPolAr)
+**					 hap62200459 geloescht (Lobin, ZMI)
+**					 hap60500306 geloescht (Inklusion)
+**					 hap62200635 geloescht (Schmidt, Mobil)
+**					 hap62200395 geloescht (Leibfried)
+**					 hap62200703 geloescht (Oesterle)
+**					 hap62201490 geloescht (Wolga)
+** 21.08.23 :  CP  : hap10720171 Chatterjee (alt: Meyer)
+** 18.08.23 :  CP  : hap10520173 (Olson, Adresse korr.)
+** 03.07.23 :  CP  : hap10117081 (Gruber, Adresse korr.)
+**					 hap10117099 (Auer) neu angelegt
+** 19.06.23 :  CP  : hap10117078 (Adresse korr.)
+**                 : hap10117097 (Adresse korr.)
+** 02.05.23 :  CP  : hap10911073 (Schaefer) neu angelegt
+** 28.03.23 :  CP  : hap10320376 (Ernst) neu angelegt
+** 10.03.23 :  CP  : hap11011771 (Rummel) neu angelegt
+**                 : hap10540172 Uffelmann (alt: Ibler)
+** 28.02.23 :  CP  : hap62202488 (SoHaMi) neu angelegt
+**					 hap10330173 (Schepers) neu angelegt
+** 22.02.23 :  CP  : hap11011573 Burk (alt: Burk-Luibl)
+**					 hap10920183 (Gisch) neu angelegt
+** 21.12.22 :  CP  : hap10420171 Pruchniewicz (alt: Baeumer)
+** 16.12.22 :  CP  : hap60500805 (Vertriebenenprojekt) neu angelegt
+**                   hap11011573 (Burk-Luibl) neu angelegt
+** 14.12.22 :  CP  : ausgeblendet: hap20310199 (KOMM)
+**                   ausgeblendet: hap10710176 (Kruse)
+**             CP  : ausgeblendet: hap10720571 (Vorholzer)
+** 12.10.22 :  CP  : hap11110370 (Roelcke) neu angelegt
+**					 hap11110372 (Knipper) neu angelegt
+** 06.09.22 :  CP  : geaendert: hap10117097 (Korr. Adresse)
+** 25.08.22 :  CP  : hap10610014 (Billino) neu angelegt
+** 04.08.22 :  CP  : geaendert: hap10910572 Herzig (alt: Kuehl)
+** 13.07.22 :  CP  : geaendert: hap62202094 Panel (Korr. Adresse)
+**					 geaendert: hap12510070 Leggewie (Korr. Adresse)
+**					 hap10610015 (Drewing) neu angelegt
+** 03.06.22 :  CP  : hap10217092 (Stockburger) neu angelegt
+** 25.05.22 :  CP  : hap62700561 (Proj. NIDIT) neu angelegt
+** 20.04.22 :  CP  : hap10810271 Kremer (alt: Graf)
+**					 hap10117078 Dubovitskaya (alt: Hammen)
+** 14.04.22 :  CP  : hap10520173 (Olson) neu angelegt
+**					 geaendert: hap10217090 (Korr. Adresse)
+** 13.04.22 :  CP  : hap10810970 Krueger (alt: Martin)
+** 06.04.22 :  CP  : hap11010472 (Olias) neu angelegt
+** 					 hap11011270 (Gruenberg) neu angelegt
+** 12.01.22 :  CP  : hap10510113 (AHL) Korrektur Adresse 
+** 14.12.21 :  CP  : hap10911271 (Schäberle) Korrektur Adresse
+** 08.12.21 :  CP  : hap10910775 (Clifton-Brown) neu angelegt
+** 24.11.21 :  CP  : geaendert: hap10510376 (Korr. Adresse)					 				
+** 08.11.21 :  CP  : hap62202094 (Panel on Planetary ) neu angelegt
+** 27.10.21 :  CP  : geaendert: hap10710171 (alt: Koehl, neu: N.N.)
+**                   geaendert: hap10710274 (Kaiser) neu angelegt
+** 02.09.21 :  CP  : geaendert: hap10320371 (alt: Abs, neu: Rakoczy)
+** 16.08.21 :  CP  : geaendert: hap10810171 (Adresse)
+** 12.07.21 :  CP  : geaendert: hap10617094 (alt: Prof. Hense, neu: N.N.)
+** 18.05.21 :  CP  : geaendert: hap10820271 (alt: Wickleder, neu: Mueller-Buschbaum)
+** 		     		 geaendert: hap10810970 (alt: Martin)
+** 30.03.21 :  CP  : hap11011477 (Passlack) neu angelegt
+** 18.02.21 :  CP  : geaendert: hap10910871 (alt: Honermeier, neu: Frei)
+** 04.02.21 :  CP  : geaendert: hap11010872 (Adresse)
+**                   geaendert: hap11011473 (Adresse)
+** 13.01.21 :  CP  : geaendert: hap11010870 (Adresse)
+**                   hap10710172 (Witzel, alt: Hartnick)
+** 21.12.20 :  CP  : geaendert: hap10620170 (Oesterhelt, alt: Friedrich)
+** 14.12.20 :  CP  : geaendert: hap10910770 (Bezeichnung)
+** 07.12.20 :  CP  : geaendert: hap10510375 (alt: Institut, neu: Professur)
+** 23.11.20 :  CP  : geaendert: hap10320271 (alt: Greisbach, neu: Timberlake)
+** 16.11.20 :  CP  : geaendert: hap11017072 (alt: hap11010272)
+** 29.10.20 :  CP  : geaendert: hap10320174 (alt: Friese, neu: Schmidt)
+** 19.10.20 :  CP  : Professur abgekuerzt (Jura)
+** 19.10.20 :  CP  : hap10710178 (Meiners) neu angelegt
+** 07.07.20 :  Th  : Bezeichnung geaendert (hap10440171)
+** 01.07.20 :  CP  : Adresse geaendert (hap10920178)
+** 18.05.20 :  Th  : Adresse geaendert (hap30100501)
+** 06.05.20 :  Th  : umbenannt: hap10910470 (alt: Schlich, neu: AG Prozesstechnik)
+** 03.04.20 :  Th  : geaendert: hap10320370 (alt: Duncker, neu: Seifert)
+** 04.03.20 :  CP  : geaendert : hap10470174 (Çakir-Mattner)
+** 04.12.19 :  Th  : hap10320274 (Adl-Amini), hap11010872 (Falcone) neu angelegt
+** 18.11.19 :  Th  : hap10510376 (Gamper) neu angelegt
+** 12.11.19 :  Th  : hap10730176 (Schneider) neu angelegt, hap10730172 umbenannt
+** 11.11.19 :  Th  : hap10730172 (Schneider) umbenannt, Geographieeintraege vereinheitlicht
+** 05.11.19 :  Th  : hap10310279 (Dhawan) neu angelegt
+** 28.10.19 :  Th  : hap11010672 (Lamp) neu angelegt
+** 24.10.19 :  Th  : hap10620173 (Krueger, NF Mooren) geaendert
+** 24.10.19 :  Th  : hap10920476 (Wahlen) neu angelegt
+** 02.10.19 :  Th  : hap10450170 (Lorenz) neu angelegt
+** 30.09.19 :  Th  : hap10817072 (Janssen) neu angelegt
+** 26.09.19 :  Th  : hap10617097 (Eitel) neu angelegt
+** 26.09.19 :  Th  : hap10217091 (Pfeiffer) neu angelegt
+** 25.09.19 :  Th  : hap10310010 (Gronemeyer) neu angelegt
+** 19.09.19 :  Th  : geaendert: hap10920474 (Godemann), Bezeichnung leicht geaendert
+** 16.09.19 :  CP  : geaendert: hap11010272 Kraemer (alt: Wuerbel)
+** 21.08.19 :  CP  : hap10470174 (Çakir-Mattner) neu eingerichtet
+** 09.08.19 :  Th  : hap10920180 (Eckert) als NF von 10920172 angelegt
+** 05.08.19 :  Th  : hap10810772 (Prpic-Schaeper) neu eingerichtet
+** 22.05.19 :  CP  : hap10617096 (Rubel) neu eingerichtet
+**                   hap10320176 (Braun) neu eingerichtet
+** 20.05.19 :  Th  : Bezeichnung hap10320174 geaendert
+** 02.05.19 :  Th  : neue WiWi-Professuren als HAP angelegt:
+**                   hap10217088 (Bertschek)
+**                   hap10217090 (Proellochs)
+** 29.04.19 :  Th  : hap10117098 (Hailbronner) neu eingerichtet                     
+** 15.04.19 :  Th  : hap10310280 (Schmitt) neu eingerichtet
+**                   hap10710176 (Kruse) neu eingerichtet
+** 29.03.19 :  Th  : hap10920173 und hap10910772 umbenannt
+** 26.03.19 :  Th  : hap10710184 (Horn) aufgeloest
+** 21.01.19 :  Th  : Tippfehler bei hap10910172 korr.
+** 19.12.18 :  Th  : hap10911171 (Erhardt) aufgeloest
+**                   neu: hap10910173 (Petrick)
+**                   geaendert: hap10910170 (alt: Herrmann, neu: Teuber)
+** 04.12.18 :  Th  : hap10410172, Bezeichnung geaendert, alt: Prof. Barth
+** 27.11.18 :  Th  : hap10920175, Bezeichnung geaendert, alt: Neuhaeuser-Berthold
+** 21.11.18 :  Th  : hap10117085, Gropp,Hauck: Bezeichnung geaendert
+** 20.11.18 :  Th  : hap10910573, Prof. Aurbacher: Bezeichnung geaendert
+** 14.11.18 :  Th  : hap125368283, doppelte Bez. Prof. gestrichen 
+** 05.11.18 :  CP  : Korr. HAp Rostek ("c" gestrichen)
+** 01.11.18 :  Th  : hap10520174, HAp Rostek, neu eingerichtet
+** 24.10.18 :  Th  : hap10329997 geaendert, Raumbezeichnung geaendert
+** 31.08.18 :  Mi  : hap10329999 geaendert: "R. 05" durch "R. 013" ersetzt
+** 20.08.18 :  Th  : hap10117097 neu eingerichtet
+** 06.08.18 :  Th  : hap10710172 neu eingerichtet
+** 18.07.18 :  Th  : hap12500001 neu eingerichtet
+** 05.06.18 :  Th  : hap13500070 umbenannt
+** 29.05.18 :  Th  : hap10920475 neu eingerichtet
+** 24.05.18 :  Th  : hap10920472, Bezeichnung geaendert
+** 11.04.18 :  Th  : hap10720474, Bezeichnung geaendert
+** 11.04.18 :  Th  : hap10447071, Bezeichnung geaendert
+** 27.03.18 :  CP  : hap10510113: Adresse geaendert
+** 21.03.18 :  Th  : hap10320371, Bezeichnung geaendert
+** 05.03.18 :  Th  : hap10117083, Adresse geaendert
+** 05.03.18 :  Th  : hap10440170, Prof. Ruby, neu angelegt
+** 28.02.18 :  Th  : hap10117084: Adresse geaendert
+** 23.02.18 :  Th  : haps 10117093 und 10117094: Bezeichnung geaendert
+** 11.01.18 :  Th  : hap10911172, ehm. Hoy, umbenannt
+** 21.11.17 :  Th  : neuer hap10710173, Prof. Buhmann, angelegt
+** 13.10.17 :  Th  : Aenderung Bezeichnung hap10320370
+** 11.09.17 :  Th  : neuer hap10710181, Prof. Davydov, angelegt
+** 16.08.17 :  Th  : neuer hap10911271, Prof. Schaeberle, angelegt
+** 24.07.17 :  Th  : neuer hap10720478, Prof. Sanna, angelegt
+** 20.07.17 :  Th  : HAps Bauer, Leonhaeuser und Liefner geloescht
+** 12.07.17 :  Th  : hap62700262, Projekt Globale Hilfe, geloescht
+** 10.07.17 :  Th  : Bezeichnung bei hap10720477 geaendert
+** 23.06.17 :  Th  : neuen hap10720571, Vorholzer, eingerichtet
+** 19.06.17 :  Th  : Bezeichnung hap10620174 geaendert
+** 22.05.17 :  Th  : Aenderung Keiser wieder zurueckgenommen
+** 14.03.17 :  CP  : Neu: hap10217087 Gissel
+** 23.02.17 :  CP  : Geaendert: hap30100501 Tierschutzbeauftragte/r (alt: Peters)
+** 16.02.17 :  Th  : Geaendert: hap10530171, Prof. Seiler, Romanistik
+** 09.01.17 :  Th  : voruebergehend geaendert: hap10117080, spaeter zuruecksetzen zu:
+**                 : Professur Keiser, Licher Str. 76
+** 21.12.16 :  CP  : geaendert: hap10490170 \Oezmen (alt: Didaktikwerkstatt)
+**                 : geloescht: hap10490172 Prof. Voland
+** 01.12.16 :  CP  : geaendert: hap10617083 H\aeusser (alt: Sporer)
+** 16.11.16 :  CP  : geaendert: Adresse hap10329997 F\oerderwerkstatt Sprachheilp\aedagogik
+**                 : geaendert: Adresse hap10329999 Didaktische Lernwerkstatt Inklusion
+**                 : geaendert: hap10810870 Manzini (alt: Clauss)
+**                 : geaendert: hap10320371 Dippelhofer (alt: Nerowski)
+** 15.09.16 :  CP  : geaendert: Adresse hap10820499 Did. Chemie
+**				   : Neu: hap10911170 K\oenig
+** 				   : geaendert: Adresse hap10820373 Mollenhauer
+** 17.08.16 :  CP  : Neu: hap10720174 Hannemann
+** 27.07.16 :  CP  : Neu: hap11011476 Schmidt
+**                 : Neu: hap12510070 Ludwig-B\oerne-Professur, Prof. Leggewie
+** 20.07.16 :  CP  : Neu: hap10911272 Schetelig
+**                 : geaendert: hap10117094 Czelk (alt: Bauer)
+** 09.06.16 :  CP  : geaendert: hap10310275 Abendsch\oen (alt: Schmidt)
+**                 : geaendert: hap10329999 Didaktische Lernwerkstatt (alt: Lernwerkstatt)
+**                 : Neu: hap60500306 Lernwerkstatt Inklusion
+** 02.05.16 :  Th  : ausgeblendet: hap10710176 (vorm. H\aeusler)
+**                 :  - "hap10710176"  "N.N. (NF Prof. H\aeusler, Math. Inst., AG Stochastik, Arndtstr. 2)",
+** 12.04.16 :  CP  : geaendert: hap10117080 Prof. Keiser (alt: Lipp)
+** 31.03.16 :  CP  : geaendert: hap10920172 Prof. Eckert (alt: Krawinkel)
+** 14.12.15 :  CP  : geaendert: hap11010670 Prof. Weber (alt: Thiel)
+**                 : geaendert: hap10617091 Entwicklungsorientierte Lernf\oerderung (alt: Krajewski)
+** 11.12.15 :  JR  : Eintraege von vor 2013 geloscht
+** 19.11.15 :  CP  : geaendert: hap10320173 Prof. K\aepplinger (alt: Feld)
+** 13.11.15 :  CP  : geaendert: hap10910370 Prof. Siemens (alt: Felix-Henningsen)
+**                 : Neu: hap11010970 Prof. Hamann (NF Petzinger)
+** 29.10.15 :  CP  : Adressaenderungen Neubau Chemie
+** 06.10.15 :  CP  : geaendert: hap10320371 Dr. Nerowski (alt: Prof. Abs)
+** 09.09.15 :  CP  : geaendert: hap10117093 Oeffentl. Recht JP / N.N. (alt: JP Sch\oendorf-Haubold
+**                 : geaendert: hap10117072 Prof. Sch\oendorf-Haubold (alt: Dann)
+** 13.08.15 :  CP  : Neu: hap10330171, Prof. Schnurr
+** 25.06.15 :  Th  : geaendert: Tippfehler in hap10320273
+** 03.06.15 :  CP  : geaendert: hap10310274 Prof. de Nève (alt: Prof. von Blumenthal)
+** 29.05.15 :  CP  : Neu: hap10730175, Prof. Mehren
+** 22.05.15 :  CP  : geaendert: hap10820271, Prof. Wickleder (alt: Prof. Schlecht)
+** 21.04.15 :  CP  : Neu: hap10617095, Prof. Schwenck
+** 25.02.15 :  CP  : Neu: hap10920474, Prof. Godemann
+** 15.01.15 :  CP  : geaendert: hap10320173, Dr. Feld (alt: Prof. Schemmann)
+** 22.12.14 :  CP  : Neu: hap12900001, ZfL
+**                 : Neu: hap20310199, KOMM
+** 12.12.14 :  CP  : Neu: hap10539999, Selbst-Lern-Werkstatt Romanistik
+** 24.11.14 :  Th  : Neu: hap10720175, Prof. Mitic, geaendert: hap10117071,
+**                 : hap10117072
+** 17.11.14 :  Th  : Neu: hap10540172 Prof. Ibler
+** 07.11.14 :  CP  : geaendert: hap10820470 Prof. Graulich (alt: Did. Chemie)
+**                 : Neu: hap10820499 Did. Chemie
+** 05.11.14 :  CP  : Neu: hap62000539 ZfbK Studiencoaching
+** 15.10.14 :  CP  : geaendert: hap10920470 Adresse
+** 07.10.14 :  CP  : Neu: hap10820373 JProf. Mollenhauer
+** 02.09.14 :  CP  : geaendert: hap10810171 Prof. Straesser (alt: Pingoud)
+**                 : Neu: hap10710177  Prof. Metsch
+** 16.07.14 :  CP  : Neu: hap10310276  Prof. Breitmeier
+** 27.06.14 :  CP  : Neu: hap10710199 Dr. Eichner
+** 14.06.14 :  CP  : geaendert: hap10430174 Projekt Landfrieden (alt: Carl)
+**                 : Neu: hap62000489 Weiterbildung Mittelhessen
+** 21.05.14 :  CP  : geaendert: hap10910770 Prof. Breuer (alt: Frede)
+**                 : geaendert: hap10810471 Dr. Lenhart (Vertretung für Prof. Gioria)
+**                 : geaendert: hap10920472 Prof. Meier-Graewe (alt: Ipaktschi)
+**                 : Neu: hap10920470 Prof. Braeunig
+** 02.04.14 :  CP  : geaendert: hap11011171 Prof. Fey (alt: Dr. Fey)
+**                 : geaendert: hap10920178 AG Ernaehrungsoekologie (alt:Hoffmann)
+** 26.03.14 :  CP  : Neu: hap10710182 Overbeck
+**                 : Neu: hap10710270 Holzer
+**                 : Neu: hap10430174 Carl
+** 24.03.14 :  CP  : geaendert: hap10710370 Schreiber (alt: Primarstufe)
+** 07.03.14 :  CP  : Neu: hap10437072 Weckel
+**                 : Neu: hap10710171 Koehl
+**                 : Neu: hap10710174 Ould-Ahmedou
+**                 : Neu: hap10710176 Haeusler
+**                 : Neu: hap10710179 Muehlherr
+**                 : Neu: hap10710180 Walther
+**                 : Neu: hap10710184 Horn
+**                 : Neu: hap10710299 Kutrib
+** 12.02.14 :  CP  : Neu: hap62201490 Projekt Sprachenpolitik Wolgaregion
+** 14.01.14 :  CP  : geloescht: hap10820370 Janek
+** 10.01.14 :  CP  : Neu: hap10617094 Hense
+** 20.12.13 :  CP  : Neu: hap10817071 Goesmann
+**                 : Neu: hap10470172 Sarikaya
+** 13.12.13 :  CP  : Neu: hap10519999 Rezat
+** 06.12.13 :  CP  : Neu: hap10480173 Rohdewald
+** 04.12.13 :  CP  : geaendert: hap10320371 Erz.Wiss. Schwerp. (alt: Abs)
+** 12.11.13 :  CP  : geaendert: hap11010272 N.N. (alt: Würbel)
+**                 : Neu: hap10720177 Thoma
+** 24.10.13 :  CP  : geaendert: hap10620174 Radtke (alt: Schwier)
+** 21.10.13 :  CP  : geaendert: hap10550171 Siegmund (alt: Finter)
+**                 : geaendert: Adresse hap10911172 Hoy
+** 30.09.13 :  CP  : Neu: hap10510370 M\oebius
+** 20.09.13 :  CP  : geaendert: hap10410172 Barth (alt: Graeb-Schmidt)
+**                 : geaendert: hap10910201 Agrarsoziologie (alt: Boland)
+**                 : Neu: hap10510113 Holocaustliteratur
+** 16.07.13 :  CP  : geaendert: hap10811070 Hughes (alt: 10810380)
+** 04.07.13 :  CP  : Neu: hap10911171 Erhardt
+**                 : Neu: hap10911172 Hoy
+**                 : Neu: hap10911174 Luehken
+**                 : geaendert: hap10117071 Bast (alt: Eifert)
+** 18.06.13 :  CP  : geaendert: hap10810670 Thormann (alt: Wilde)
+**                 : geaendert: hap10910870 Snowdon (alt: Friedt)
+**                 : Neu: hap10920270 Boernke
+** 06.06.13 :  CP  : Neu: hap10820470 Did. d. Chemie
+** 25.04.13 :  CP  : Neu: hap10720373 Prof. Duerr
+** 23.04.13 :  CP  : geaendert: hap10320272 van Minnen (alt: Stachowiak)
+**                 : geaendert: hap10810171 Biochemie (alt: Pingoud)
+**                 : geaendert: hap10320171 Wiezorek (alt: Paed. Jugend)
+** 25.03.13 :  CP  : geaendert: Greschke (alt: Gresche)
+**                 : Neu: hap11010170 Prof. Bergmann
+**                 : geaendert: hap10710370 Prof. fuer die Primarstufe (alt: Schreiber)
+**                 : geaendert: hap10710372 Prof. Lengnink (alt: Straesser)
+**                 : geanedert: hap10117070 Prof. Augsberg (alt: Bryde)
+** 19.03.13 :  CP  : geaendert: hap10310174 Prof. Gresche (alt: Reimann)
+**                 : geaendert: hap10117083 Prof. Kretschmer (alt: Wolfslast)
+**                 : geaendert: hap10117081 Prof. Auer (alt: Forster)
+**                 : geaendert: hap10310173 Prof. Schlueter (alt: Krebs)
+** 04.03.13 :  CP  : geaendert: hap10320171 Prof. f. Päd. d. Jugendalters (alt: Ecarius)
+** 26.02.13 :  CP  : geaendert: hap10810271 Prof. Graf (alt: Mayer)
+** ===============================================================================================
+**
+** Bemerkungen: Einige spezielle Zeichen sind wie folgt anzugeben:
+**
+**              * Spitzwinkelklammern von HTML-tags:
+**                 - Mit vorangestelltem Backslash, also z.B. \</a\> fuer </a>
+**
+**              * Umlaute, SZ: \Ae , \ae , \Oe , \oe , \Ue , \ue , \ss
+**
+*
+*/
+
+
+
+table jlu_handapparate =
+"hap10109999"  "Lernzentrum Veterin\aermedizin",
+"hap10117070"  "Prof. Augsberg",
+"hap10117071"  "Prof. Bast",
+"hap10117072"  "Prof. Sch\oendorf-Haubold",
+"hap10117073"  "Prof. Marauhn",
+"hap10117074"  "Prof. Reimer",
+"hap10117075"  "Prof. Adolphsen",
+"hap10117076"  "Prof. Walker",
+"hap10117077"  "Prof. Holle",
+"hap10117078"  "Prof. Dubovitskaya",
+"hap10117079"  "Prof. Gutzeit",
+"hap10117080"  "Prof. Keiser",
+"hap10117081"  "Prof. Gruber",
+"hap10117082"  "Prof. Benicke",
+"hap10117083"  "Prof. Kretschmer",
+"hap10117084"  "Prof. Rotsch",
+"hap10117085"  "Prof. Hauck",
+"hap10117086"  "Prof. Bannenberg",
+"hap10117087"  "Prof. Britz",
+"hap10117093"  "Juniorprof. von Achenbach",
+"hap10117094"  "Juniorprof. Czelk",
+"hap10117097"  "Prof. Rudkowski",
+"hap10117098"  "Prof. Hailbronner",
+"hap10117099"  "Prof. Auer",
+"hap10217087"  "Juniorprof. Gissel",
+"hap10217088"  "Prof. Bertschek",
+"hap10217090"  "Prof. Pr\oellochs",
+"hap10217091"  "Prof. J. Pfeiffer",
+"hap10217092"  "Prof. Stockburger",
+"hap10217093"  "Prof. Kurz",
+"hap10310010"  "Prof. Gronemeyer",
+"hap10310172"  "Prof. Bruesemeister",
+"hap10310173"  "Prof. Schl\ueter",
+"hap10310175"  "Prof. Daphi",
+"hap10310176"  "Prof. Ahrens",
+"hap10310178"  "Prof. Schwindenhammer",
+"hap10310271"  "Prof. Grasse",
+"hap10310272"  "Prof. Kreide",
+"hap10310274"  "Prof. de Ne\-ve",
+"hap10310275"  "Prof. Abendsch\oen",
+"hap10310276"  "Prof. Breitmeier",
+"hap10310277"  "Prof. Gawrich",
+"hap10310279"  "Prof. Klapeer",
+"hap10310280"  "Prof. Schmitt",
+"hap10320170"  "Prof. Miethe",
+"hap10320171"  "Prof. Wiezorek",
+"hap10320173"  "Prof. K\aepplinger",
+"hap10320174"  "Prof. C. Schmidt",
+"hap10320175"  "Prof. Stecher",
+"hap10320176"  "Prof. Braun",
+"hap10320270"  "Prof. Stoeppler",
+"hap10320271"  "Prof. Timberlake",
+"hap10320272"  "Prof. van Minnen",
+"hap10320273"  "Prof. von Stechow",
+"hap10320370"  "Prof. Seifert",
+"hap10320371"  "Prof. Rakoczy",
+"hap10320374"  "Prof. Neuss",
+"hap10320375"  "Prof. Hinzke",
+"hap10320376"  "Prof. Ernst",
+"hap10329997"  "F\oerderwerkstatt d. Abt. Sprachheilp\aedagogik",
+"hap10329998"  "Bildungswerkstatt",
+"hap10329999"  "Didaktische Lernwerkstatt / Arbeitsstelle f\uer Inklusion",
+"hap10330101"  "Diathek",
+"hap10330170"  "Prof. Buschk\uehle",
+"hap10330171"  "Prof. Schnurr",
+"hap10330173"  "Prof. Schepers",
+"hap10340171"  "Prof. Bullerjahn",
+"hap10409999"  "Mediathek Evangelische und Katholische Theologie",
+"hap10410170"  "Prof. Eisen",
+"hap10410171"  "Prof. Brinkmann",
+"hap10410172"  "Prof. David",
+"hap10410173"  "Prof. Lexutt",
+"hap10420171"  "Prof. Pruchniewicz",
+"hap10420173"  "Prof. Schmidt",
+"hap10437001"  "Didaktik d. Geschichte",
+"hap10437070"  "Handapparat Alte Geschichte",
+"hap10437072"  "Prof. Weckel",
+"hap10440170"  "Prof. Ruby",
+"hap10440171"  "Prof. Sp\aeth",
+"hap10447171"  "Inst. f. Kunstgeschichte",
+"hap10450170"  "Prof. Lorenz",
+"hap10470170"  "SFB Erinnerungskulturen, Islamwissenschaft",
+"hap10470171"  "Prof. Kirchner",
+"hap10470172"  "Prof. Sarikaya",
+"hap10470174"  "Prof. C\,akir-Mattner",
+"hap10490170"  "Prof. \Oezmen",
+"hap10510113"  "Arbeitsstelle Holocaustliteratur",
+"hap10510170"  "Prof. Voeste",
+"hap10510171"  "Prof. Hennig",
+"hap10510172"  "Prof. Lobin",
+"hap10510173"  "Prof. Gloning",
+"hap10510272"  "Prof. Jacob",
+"hap10510273"  "Prof. Simonis",
+"hap10510274"  "Prof. Wirth",
+"hap10510275"  "Prof. Dietl",
+"hap10510370"  "Prof. M\oebius",
+"hap10510371"  "Prof. Dube",
+"hap10510372"  "Prof. Lehnen",
+"hap10510374"  "Prof. Madlener-Charpentier",
+"hap10510375"  "Prof. Feilke",
+"hap10510376"  "Prof. Gamper",
+"hap10520173"  "Prof. Olson",
+"hap10520174"  "Prof. Rostek",
+"hap10520176"  "Prof. Luo",
+"hap10520178"  "Prof. Steininger",
+"hap10530170"  "Prof. Ladilova",
+"hap10530171"  "Prof. Seiler",
+"hap10530174"  "Prof. Dolle",
+"hap10530175"  "Prof. Martinez",
+"hap10539999"  "Selbst-Lern-Werkstatt Romanistik",
+"hap10540171"  "Prof. Wingender",
+"hap10540172"  "Prof. Uffelmann",
+"hap10540173"  "Prof. Daiber",
+"hap10550171"  "Prof. Siegmund",
+"hap10610014"  "Prof. Billino",
+"hap10610015"  "Prof. Drewing",
+"hap10617040"  "Prof. Stark",
+"hap10617070"  "Prof. Gegenfurtner",
+"hap10617071"  "Prof. Knauff",
+"hap10617073"  "Prof. Schuster",
+"hap10617074"  "Prof. Klehe",
+"hap10617076"  "Prof. Bardach",
+"hap10617077"  "Prof. Brunstein",
+"hap10617079"  "Prof. Kersting",
+"hap10617080"  "Prof. Hermann",
+"hap10617081"  "Prof. Hennig",
+"hap10617082"  "Prof. Schwarzer",
+"hap10617083"  "Prof. H\aeusser",
+"hap10617090"  "Prof. Fleming",
+"hap10617092"  "Prof. Wittmann",
+"hap10617093"  "Prof. Fiehler",
+"hap10617095"  "Prof. Schwenck",
+"hap10617097"  "Prof. Eitel",
+"hap10617170"  "Prof. de Haas",
+"hap10620170"  "Prof. Oesterhelt",
+"hap10620171"  "Prof. Munzert",
+"hap10620172"  "Prof. M\ueller",
+"hap10620173"  "Prof. Kr\ueger",
+"hap10620174"  "Prof. Mutz",
+"hap10620175"  "Prof. Hegele",
+"hap10629999"  "Dr. D\oehring",
+"hap10710270"  "Prof. Holzer",
+"hap10710172"  "Prof. Witzel",
+"hap10710173"  "Prof. Buhmann",
+"hap10710174"  "Prof. Ould-Ahmedou",
+"hap10710177"  "Prof. Metsch",
+"hap10710178"  "Prof. Meiners",
+"hap10710179"  "Prof. M\uehlherr",
+"hap10710181"  "Prof. Davydov",
+"hap10710182"  "Prof. Overbeck",
+"hap10710199"  "Dr. Eichner",
+"hap10710274"  "Prof. Kaiser",
+"hap10710276"  "Prof. Wendlandt",
+"hap10710277"  "Prof. Dobs",
+"hap10710299"  "Prof. Kutrib",
+"hap10710370"  "Prof. Schreiber",
+"hap10710372"  "Prof. Lengnink",
+"hap10719998"  "Lernzentrum Mathematik",
+"hap10719999"  "Testothek Mathematik",
+"hap10720170"  "Prof. Elm",
+"hap10720171"  "Prof. Chatterjee",
+"hap10720172"  "Prof. Klar",
+"hap10720173"  "Prof. Heiliger",
+"hap10720174"  "Prof. Hannemann",
+"hap10720177"  "Prof. Thoma",
+"hap10720271"  "Prof. Brinkmann",
+"hap10720274"  "Prof. Scheidenberger",
+"hap10720275"  "Prof. H\oehne",
+"hap10720370"  "Prof. Schlettwein",
+"hap10720371"  "Prof. Kohl",
+"hap10720372"  "Prof. Schirmeisen",
+"hap10720373"  "Prof. D\uerr",
+"hap10720471"  "Prof. Bunde",
+"hap10720474"  "Prof. Fischer",
+"hap10720477"  "Prof. von Smekal",
+"hap10720478"  "Prof. Sanna",
+"hap10720570"  "Prof. von Aufschnaiter",
+"hap10729998"  "Physik Demonstrationspraktikum",
+"hap10729999"  "Physik Vorlesungsvorbereitung",
+"hap10730170"  "Prof. Luterbacher",
+"hap10730171"  "Prof. Dittmann",
+"hap10730172"  "Prof. Hennemann",
+"hap10730173"  "Prof. Diller",
+"hap10730174"  "Prof. Fuchs",
+"hap10730175"  "Prof. Wittlich",
+"hap10730176"  "Prof. Schneider",
+"hap10730270"  "Prof. Haversath",
+"hap10730271"  "Prof. Werle",
+"hap10739999"  "Dr. Volker",
+"hap10810170"  "Prof. Bindereif",
+"hap10810171"  "Prof. Str\aesser",
+"hap10810199"  "Prof. Friedhoff",
+"hap10810270"  "Prof. Ziemek",
+"hap10810271"  "Prof. Kremer",
+"hap10810371"  "Prof. Wissemann",
+"hap10810370"  "Prof. Becker",
+"hap10810470"  "Prof. M\ueller",
+"hap10810471"  "Dr. Lenhart",
+"hap10810472"  "Prof. Kunze",
+"hap10810572"  "Prof. Hake",
+"hap10810573"  "Prof. Braun",
+"hap10810670"  "Prof. Thormann",
+"hap10810671"  "Prof. Klug",
+"hap10810760"  "Prof. Werding",
+"hap10810772"  "Prof. Prpic-Sch\aeper",
+"hap10810780"  "Prof. Wolters",
+"hap10810781"  "Prof. Wilke",
+"hap10810782"  "Prof. Encarnacao",
+"hap10810784"  "Prof. Poppenborg, Martin",
+"hap10810870"  "Prof. Manzini",
+"hap10810871"  "Prof. M\uench",
+"hap10810970"  "Prof. Kr\ueger",
+"hap10811070"  "Dr. Zeidler",
+"hap10817071"  "Prof. Goesmann",
+"hap10817072"  "Prof. Janssen",
+"hap10820170"  "Prof. G\oettlich",
+"hap10820171"  "Prof. Maison",
+"hap10820270"  "Prof. Schindler",
+"hap10820271"  "Prof. M\ueller-Buschbaum",
+"hap10820272"  "Prof. Spengler",
+"hap10820275"  "Prof. Lepple",
+"hap10820371"  "Prof. Over",
+"hap10820372"  "Prof. Smarsly",
+"hap10820373"  "Prof. Mollenhauer",
+"hap10820470"  "Prof. Graulich",
+"hap10820499"  "Handapp. Didaktik d. Chemie",
+"hap10820570"  "Prof. Zorn",
+"hap10820571"  "Prof. Hamscher",
+"hap10820572"  "Prof. R\uehl",
+"hap10910170"  "Prof. Teuber",
+"hap10910172"  "Prof. Nuppenau",
+"hap10910173"  "Prof. Petrick",
+"hap10910174"  "Prof. Kopp",
+"hap10910301"  "Inst. f. Bodenkunde u. Bodenerhaltung",
+"hap10910370"  "Prof. Siemens",
+"hap10910470"  "AG Prozesstechnik",
+"hap10910572"  "Prof. Herzig",
+"hap10910573"  "Prof. Aurbacher",
+"hap10910670"  "Prof. Kaempfer",
+"hap10910671"  "Prof. Schnell",
+"hap10910770"  "Prof. Breuer",
+"hap10910771"  "Prof. Gaeth",
+"hap10910772"  "Prof. Kleinebecker",
+"hap10910775"  "Prof. Clifton-Brown",
+"hap10910812"  "Prof. Golicz",
+"hap10910870"  "Prof. Snowdon",
+"hap10910871"  "Prof. Frei",
+"hap10910873"  "Prof. Schie\ssl-Weidenweber",
+"hap10910971"  "Prof. Frisch",
+"hap10911071"  "Prof. Vilcinskas",
+"hap10911073"  "Prof. Sch\aefer",
+"hap10911170"  "Prof. K\oenig",
+"hap10911172"  "Prof. Koenig von Borstel",
+"hap10911174"  "Prof. L\uehken",
+"hap10911271"  "Prof. Sch\aeberle",
+"hap10911272"  "Prof. Schetelig",
+"hap10920170"  "Prof. Becker",
+"hap10920171"  "Prof. Morlock",
+"hap10920172"  "Prof. Eckert",
+"hap10920173"  "Prof. Wagner",
+"hap10920175"  "Prof. Fasshauer",
+"hap10920178"  "AG Ern\aehrungsoekologie",
+"hap10920179"  "Prof. Wenzel",
+"hap10920183"  "Prof. Gisch",
+"hap10920180"  "Prof. Eckert",
+"hap10920270"  "Prof. B\oernke",
+"hap10920271"  "Prof. Santner",
+"hap10920370"  "Prof. Eder",
+"hap10920470"  "Prof. Br\aeunig",
+"hap10920474"  "Prof. Godemann",
+"hap10920475"  "Prof. Gwozdz",
+"hap10920476"  "Prof. Wahlen",
+"hap11017072"  "Prof. Kr\aemer",
+"hap11010370"  "Prof. L\uetteke",
+"hap11010371"  "Prof. Mazurek",
+"hap11010472"  "Prof. Olias",
+"hap11010473"  "Prof. Herden",
+"hap11010670"  "Prof. Weber",
+"hap11010770"  "Prof. Ewers",
+"hap11010870"  "Prof. Taubert",
+"hap11010872"  "Prof. Falcone",
+"hap11010972"  "Prof. Geyer",
+"hap11010970"  "Prof. Hamann",
+"hap11010672"  "Prof. Lamp",
+"hap11011071"  "Prof. Kramer",
+"hap11011171"  "Prof. Fey",
+"hap11011270"  "Prof. Gr\uenberg",
+"hap11011471"  "Prof. Wenisch",
+"hap11011473"  "Prof. Moritz",
+"hap11011476"  "Prof. M. Schmidt",
+"hap11011477"  "Prof. Pa\sslack",
+"hap11011573"  "Prof. Burk",
+"hap11011771"  "Prof. Rummel",
+"hap11110370"  "Prof. Roelcke",
+"hap11110372"  "Prof. Knipper",
+"hap12500001"  "Dr. Hergenhan",
+"hap12510070"  "Ludwig-B\oerne-Professur",
+"hap12900001"  "ZfL Referat Studien- u. Pr\uefungsangelegenheiten",
+"hap30100501"  "Tierschutzbeauftragte/r",
+"hap60500805"  "Vertriebenenprojekt / Zeitgeschichte",
+"hap62000539"  "ZfbK, Psychol. Beratungsstelle",
+"hap62202094"  "Panel on Planetary Thinking",
+"hap62202488"  "Projekt SoHaMi",
+"hap62700561"  "ZfbK, Proj. NIDIT",
+default "Handapparat"
+;
+
+
+
+/*
+*** EOF ***
+*/
