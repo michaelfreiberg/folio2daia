@@ -770,7 +770,7 @@
         <hap nr="hap10329998">Bildungswerkstatt</hap>
         <hap nr="hap10329999">Didaktische Lernwerkstatt / Arbeitsstelle f&#xfc;r Inklusion</hap>
         <hap nr="hap10330101">Diathek</hap>
-        <hap nr="hap10330170">Prof. Buschk&#xfc;hle</hap>
+        <hap nr="hap10330170">Prof. Johns</hap>
         <hap nr="hap10330171">Prof. Schnurr</hap>
         <hap nr="hap10330173">Prof. Schepers</hap>
         <hap nr="hap10340171">Prof. Bullerjahn</hap>
