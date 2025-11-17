@@ -242,6 +242,18 @@
             <map linktype="bibmap"/>
         </e>
         <e>
+            <c>ILN204/CG/ZRW/Magazin</c>
+            <n xml:lang="de">ZwBibl. Recht und Wirtschaft, Licher Str. 68</n>
+            <url>https://www.uni-giessen.de/ub/de/ueber-uns/standorte/ub-db/bik?bik=010</url>
+            <campus>Magazin</campus>
+        </e>
+        <e>
+            <c>ILN204/CG/UB/Freihand1OG</c>
+            <n xml:lang="de">Universitätsbibliothek (UB), Otto-Behaghel-Str. 8</n>
+            <url>https://www.uni-giessen.de/ub/de/ueber-uns/standorte/ub-db/bik?bik=000</url>
+            <map linktype="mapongo"/>
+        </e>
+        <e>
             <c>ILN204/CG/UB/Freihand1OG</c>
             <n xml:lang="de">Universitätsbibliothek (UB), Otto-Behaghel-Str. 8</n>
             <url>https://www.uni-giessen.de/ub/de/ueber-uns/standorte/ub-db/bik?bik=000</url>
@@ -1032,8 +1044,10 @@
     <xsl:template match="instanceData">
         <xsl:text>&#10;</xsl:text>
         <xsl:for-each
-            select="holdings/holding[(holdingsTypeId = '996f93e2-5b5e-4cf2-9168-33ced1f95eed') and not(xs:boolean(discoverySuppress))]">
-            <!-- für elektronische Bestände -->
+            select="holdings/holding[(holdingsTypeId = '996f93e2-5b5e-4cf2-9168-33ced1f95eed'                        
+                        and not(xs:boolean(discoverySuppress))
+                                     )]">
+            <!-- für elektronische Bestände mit Ausleihindikator ist nicht gleich 'a' (In Erwerbung) -->
             <!-- evtl. sortieren <xsl:sort select="..."/> -->
             <!-- EPN vorangestellt -->
             <!-- name() != effectiveLocation : Standortangaben ignorieren, um abt_name
@@ -1041,51 +1055,70 @@
             <xsl:apply-templates select="./*[name() != 'effectiveLocation']|./*[name() != 'effectiveLocation']/*">
                 <xsl:sort select="index-of(('hrid'),name())" order="descending"/>
             </xsl:apply-templates>
-            <xsl:call-template name="DAIA">
-                <xsl:with-param name="tag">aus_ind</xsl:with-param>
-                <xsl:with-param name="value" select="'x online'"/>
-            </xsl:call-template>
-            <xsl:if test="notes[holdingsNoteTypeId = 'd1d99196-8904-4b2e-9125-9f7bbbf54cc1' and
-                                note = '0']">
-                <xsl:call-template name="DAIA">
-                    <xsl:with-param name="tag">aus_status</xsl:with-param>
-                    <xsl:with-param name="value" select="'frei'"/>
-                </xsl:call-template>
-            </xsl:if>
-            <xsl:variable name="electronicAccessURIs">
-                <xsl:copy-of select="../../instance/electronicAccess/uri/text()"/>
-                <xsl:copy-of select="electronicAccess/uri/text()"/>
-            </xsl:variable>
-            <xsl:if test="contains($electronicAccessURIs, 'beck.de')">
-                <xsl:call-template name="DAIA">
-                    <xsl:with-param name="tag">aus_text</xsl:with-param>                    
-                    <xsl:with-param name="value">
-                        <xsl:text>Für die Nutzung ist eine persönliche Registrierung bei Beck erforderlich, siehe </xsl:text>
-                        <xsl:text>&lt;a target=&quot;_blank&quot; href=&quot;</xsl:text>
-                        <xsl:text>https://www.uni-giessen.de/ub/de/rech/emedien/ebooks-tipps/beck-online/beck-online-und-beck-ebibliothek-zugang</xsl:text>
-                        <xsl:text>&quot;&gt;</xsl:text>
-                        <xsl:text>Anleitung</xsl:text>
-                        <xsl:text>&lt;/a&gt;</xsl:text>
-                        <xsl:text>. </xsl:text>
-                        <xsl:text>(Von außerhalb des JLU-Campusnetzes zusätzlich</xsl:text>
-                        <xsl:text>&lt;a target=&quot;_blank&quot; href=&quot;</xsl:text>
-                        <xsl:text>https://www.uni-giessen.de/ub/de/rech/emedien/zugang/ezproxy</xsl:text>
-                        <xsl:text>&quot;&gt; </xsl:text>
-                        <xsl:text>EZ-Proxy</xsl:text>
-                        <xsl:text>&lt;/a&gt;</xsl:text>    
-                        <xsl:text> aktivieren)</xsl:text>
-                    </xsl:with-param>
-                </xsl:call-template>
-            </xsl:if>
-            <!-- Lizenzindikator -->
-            <xsl:if test="notes[holdingsNoteTypeId = 'd1d99196-8904-4b2e-9125-9f7bbbf54cc1'][note = '0']">
-                <xsl:call-template name="DAIA">
-                    <xsl:with-param name="tag">aus_text</xsl:with-param>                    
-                    <xsl:with-param name="value">
-                        <xsl:text>Frei zugänglich</xsl:text>
-                    </xsl:with-param>
-                </xsl:call-template>
-            </xsl:if>
+            <xsl:choose>
+                <xsl:when test="substring((items/item/temporaryLoanType/name, items/item/permanentLoanType/name)[1], 3, 1) != 'a'">
+                    <xsl:call-template name="DAIA">
+                        <xsl:with-param name="tag">aus_ind</xsl:with-param>
+                        <xsl:with-param name="value" select="'x online'"/>
+                    </xsl:call-template>
+                    <xsl:if test="notes[holdingsNoteTypeId = 'd1d99196-8904-4b2e-9125-9f7bbbf54cc1' and
+                        note = '0']">
+                        <xsl:call-template name="DAIA">
+                            <xsl:with-param name="tag">aus_status</xsl:with-param>
+                            <xsl:with-param name="value" select="'frei'"/>
+                        </xsl:call-template>
+                    </xsl:if>
+                    <xsl:variable name="electronicAccessURIs">
+                        <xsl:copy-of select="../../instance/electronicAccess/uri/text()"/>
+                        <xsl:copy-of select="electronicAccess/uri/text()"/>
+                    </xsl:variable>
+                    <xsl:if test="contains($electronicAccessURIs, 'beck.de')">
+                        <xsl:call-template name="DAIA">
+                            <xsl:with-param name="tag">aus_text</xsl:with-param>                    
+                            <xsl:with-param name="value">
+                                <xsl:text>Für die Nutzung ist eine persönliche Registrierung bei Beck erforderlich, siehe </xsl:text>
+                                <xsl:text>&lt;a target=&quot;_blank&quot; href=&quot;</xsl:text>
+                                <xsl:text>https://www.uni-giessen.de/ub/de/rech/emedien/ebooks-tipps/beck-online/beck-online-und-beck-ebibliothek-zugang</xsl:text>
+                                <xsl:text>&quot;&gt;</xsl:text>
+                                <xsl:text>Anleitung</xsl:text>
+                                <xsl:text>&lt;/a&gt;</xsl:text>
+                                <xsl:text>. </xsl:text>
+                                <xsl:text>(Von außerhalb des JLU-Campusnetzes zusätzlich</xsl:text>
+                                <xsl:text>&lt;a target=&quot;_blank&quot; href=&quot;</xsl:text>
+                                <xsl:text>https://www.uni-giessen.de/ub/de/rech/emedien/zugang/ezproxy</xsl:text>
+                                <xsl:text>&quot;&gt; </xsl:text>
+                                <xsl:text>EZ-Proxy</xsl:text>
+                                <xsl:text>&lt;/a&gt;</xsl:text>    
+                                <xsl:text> aktivieren)</xsl:text>
+                            </xsl:with-param>
+                        </xsl:call-template>
+                    </xsl:if>
+                    <!-- Lizenzindikator -->
+                    <xsl:if test="notes[holdingsNoteTypeId = 'd1d99196-8904-4b2e-9125-9f7bbbf54cc1'][note = '0']">
+                        <xsl:call-template name="DAIA">
+                            <xsl:with-param name="tag">aus_text</xsl:with-param>                    
+                            <xsl:with-param name="value">
+                                <xsl:text>Frei zugänglich</xsl:text>
+                            </xsl:with-param>
+                        </xsl:call-template>
+                    </xsl:if>                    
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:call-template name="DAIA">
+                        <xsl:with-param name="tag">aus_ind</xsl:with-param>                    
+                        <xsl:with-param name="value">
+                            <xsl:text>a bestellt</xsl:text>
+                        </xsl:with-param>
+                    </xsl:call-template>
+                    <xsl:call-template name="DAIA">
+                        <xsl:with-param name="tag">aus_status</xsl:with-param>                    
+                        <xsl:with-param name="value">
+                            <xsl:text>gesperrt</xsl:text>
+                        </xsl:with-param>
+                    </xsl:call-template>
+                </xsl:otherwise>
+            </xsl:choose>
+
         </xsl:for-each>
         <xsl:for-each
             select="holdings/holding[(holdingsTypeId != '996f93e2-5b5e-4cf2-9168-33ced1f95eed') and not(xs:boolean(discoverySuppress))]">
