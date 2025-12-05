@@ -922,7 +922,7 @@
         <hap nr="hap10810573">Prof. Braun</hap>
         <hap nr="hap10810670">Prof. Thormann</hap>
         <hap nr="hap10810671">Prof. Klug</hap>
-        <hap nr="hap10810760">Prof. Werding</hap>
+        <hap nr="hap10810760">Prof. Ziegler</hap>
         <hap nr="hap10810772">Prof. Prpic-Sch&#xe4;per</hap>
         <hap nr="hap10810780">Prof. Wolters</hap>
         <hap nr="hap10810781">Prof. Wilke</hap>
