@@ -1123,7 +1123,8 @@
         <xsl:for-each
             select="holdings/holding[(holdingsTypeId != '996f93e2-5b5e-4cf2-9168-33ced1f95eed') and not(xs:boolean(discoverySuppress))]">
             <!-- für nicht elektronische Bestände -->
-            <xsl:sort select="index-of(('holdingsStatements'),name())" order="ascending" lang="de"/>
+            <xsl:sort select="contains(callNumber, 'CD')" order="ascending" />
+            <xsl:sort select="count(holdingsStatements)" order="ascending"/>
             <xsl:sort select="if(substring(../../instance/administrativeNotes[contains(text(),'Bibliografische Gattung')], 1, 2) = 'Ab') then 
                                 if(number(index-of(('ILN204/CG/UB/UBMagKeller', 'ILN204/CG/UB/UBMag3', 'ILN204/CG/UB/UBMagPohlheim'), effectiveLocation/code)))
                                     then
@@ -1133,7 +1134,12 @@
                               else
                                 effectiveLocation/code" order="ascending" lang="de"/>            
             <xsl:sort select="callNumber" order="ascending" lang="de"/>
+            <!-- .............. -->
+            <!-- DEBUG messages -->
 <!--            <xsl:text>&#xA;DAIAinfo aus_text DEBUG: </xsl:text>
+            <xsl:text>contains_cd_</xsl:text><xsl:copy-of select="contains(callNumber, 'CD')"/>
+            <xsl:text>_holdingsStatements_</xsl:text><xsl:copy-of select="count(holdingsStatements)"/>
+            <xsl:text>_locationSort_</xsl:text>
             <xsl:copy-of select="if(substring(../../instance/administrativeNotes[contains(text(),'Bibliografische Gattung')], 1, 2) = 'Ab') then 
                 if(number(index-of(('ILN204/CG/UB/UBMagKeller', 'ILN204/CG/UB/UBMag3', 'ILN204/CG/UB/UBMagPohlheim'), effectiveLocation/code)))
                     then
@@ -1143,6 +1149,8 @@
                 else
                 effectiveLocation/code"/>
             <xsl:text> ofniAIAD</xsl:text>-->
+            <!-- DEBUG messages -->
+            <!-- .............. -->
             <xsl:if test="not(items/item)">
                 <xsl:apply-templates select="./hrid|./notes/note|./effectiveLocation/discoveryDisplayName">
                     <xsl:sort select="index-of(('hrid'),name())" order="descending"/>
@@ -1167,7 +1175,13 @@
                     <xsl:apply-templates select="../../holdingsStatements/*"/>                 
                 </xsl:if>
                 <xsl:if test="status/name='Intellectual item'">
-                    <xsl:for-each select="../../pieces/piece[not(xs:boolean(discoverySuppress)) and xs:boolean(displayOnHolding)]"> <!-- Hefteingänge -->
+                    <xsl:if test="../../pieces/piece[not(xs:boolean(discoverySuppress)) and xs:boolean(displayOnHolding)]"> <!-- mindestens ein Heft -->
+                        <xsl:call-template name="DAIA">
+                            <xsl:with-param name="tag">aus_text</xsl:with-param>
+                            <xsl:with-param name="value">Aktuelle Hefte:</xsl:with-param>
+                        </xsl:call-template> 
+                    </xsl:if>
+                    <xsl:for-each select="../../pieces/piece[not(xs:boolean(discoverySuppress)) and xs:boolean(displayOnHolding)]"> <!-- Hefteingänge --> <!-- TBD die letzen drei -->
                         <xsl:sort select="caption"/>
                         <xsl:call-template name="DAIA">
                             <xsl:with-param name="tag">aus_text</xsl:with-param>
@@ -1183,7 +1197,7 @@
                     select="$bbtabelle/e[c = current()/effectiveLocation/code]/map"/>
                 <xsl:choose>
                     <!-- bei HAPs kein Template aufrufen -->
-                    <xsl:when test="matches(../../notes[holdingsNoteTypeId = '013e0b2c-2259-4ee8-8d15-f463f1aeb0b1']/note, 'hap\d+')"/>
+                    <xsl:when test="matches(string-join(../../notes[holdingsNoteTypeId = '013e0b2c-2259-4ee8-8d15-f463f1aeb0b1']/note), 'hap\d+')"/>
                     <xsl:when test="$map/@linktype = 'mapongo'">
                         <xsl:call-template name="mapongo"/>
                     </xsl:when>
@@ -1326,7 +1340,7 @@
                 <status name="Checked out">                          <b>UV</b><c>UV</c><d>UV</d><e>EM</e><i>IV</i><o>SX</o><s>CN</s><u>UV</u><y>YY</y></status>
                 <status name="Claimed returned"/>
                 <status name="Declared lost"/>
-                <status name="In process">                           <b>UV</b><c>UV</c><d>UV</d><e>EM</e><i>IV</i><o>SX</o><s>CN</s><u>UV</u><y>YY</y></status>
+                <status name="In process">                           <b>ZZ</b><c>ZZ</c><d>ZZ</d><e>ZZ</e><i>ZZ</i><o>ZZ</o><s>ZZ</s><u>ZZ</u><y>ZZ</y></status>
                 <status name="In process (not-requestable)"/>
                 <status name="Intellectual item">                    <b>UI</b><c>UI</c><d>UI</d><e>EM</e><i>II</i><o>SX</o><s>SX</s><u>UI</u><y>YY</y></status>
                 <status name="In transit">                           <b>UV</b><c>UV</c><d>UV</d><e>EM</e><i>IV</i><o>SX</o><s>CN</s><u>UV</u><y>YY</y></status>
@@ -1532,7 +1546,7 @@
                         select="$campusubgiessen/hinweis-ii[@campus = $bbtabelle/e[c = current()/../effectiveLocation/code]/campus]/*"
                     />
                 </II>
-                <!-- Fallbehandlung Fachbibliotheken, ind = o -->
+                <!-- XX=Default: Nicht verfügbar -->
                 <XX>
                     <i>g nicht_ausleihbar</i>
                     <s>unbekannt</s>
@@ -1543,7 +1557,19 @@
                         select="$campusubgiessen/hinweis-y[@campus = $bbtabelle/e[c = current()/../effectiveLocation/code]/campus]/*"
                     />
                 </YY>
-                <!-- XX=Default: Nicht verfügbar -->
+                <ZZ>
+                    <!-- Für Status "In process" -->
+                    <xsl:choose>
+                        <xsl:when test="ancestor::instanceData/instance/natureOfContentTermIds = '0abeee3d-8ad2-4b04-92ff-221b4fce1075'">
+                            <i>g nicht_ausleihbar</i>
+                            <t1 xml:lang="de">Zum Binden beim Buchbinder</t1>
+                            <t1 xml:lang="en">reading room only</t1>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <i>g nicht_ausleihbar</i>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </ZZ>
             </xsl:variable>
             <xsl:copy-of
                 select="$cases/*[name() = ($emulator/status[@name = current()/name]/*[name() = $ind], 'XX')[1]]/*"
