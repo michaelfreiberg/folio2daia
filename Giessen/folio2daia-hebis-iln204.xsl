@@ -936,6 +936,7 @@
         <hap nr="hap10817072">Prof. Janssen</hap>
         <hap nr="hap10820170">Prof. G&#xf6;ttlich</hap>
         <hap nr="hap10820171">Prof. Maison</hap>
+        <hap nr="hap10820173">Prof. Schreiner</hap>        
         <hap nr="hap10820270">Prof. Schindler</hap>
         <hap nr="hap10820271">Prof. M&#xfc;ller-Buschbaum</hap>
         <hap nr="hap10820272">Prof. Spengler</hap>
@@ -946,7 +947,7 @@
         <hap nr="hap10820470">Prof. Graulich</hap>
         <hap nr="hap10820499">Handapp. Didaktik d. Chemie</hap>
         <hap nr="hap10820570">Prof. Zorn</hap>
-        <hap nr="hap10820571">Prof. Hamscher</hap>
+        <hap nr="hap10820571">Prof. Hamscher</hap>        
         <hap nr="hap10820572">Prof. R&#xfc;hl</hap>
         <hap nr="hap10910170">Prof. Teuber</hap>
         <hap nr="hap10910172">Prof. Nuppenau</hap>
