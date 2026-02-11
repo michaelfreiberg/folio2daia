@@ -738,7 +738,7 @@
         <hap nr="hap10117085">Prof. Hauck</hap>
         <hap nr="hap10117086">Prof. Bannenberg</hap>
         <hap nr="hap10117087">Prof. Britz</hap>
-        <hap nr="hap10117093">Juniorprof. von Achenbach</hap>
+        <hap nr="hap10117093">Prof. Heitzer</hap>
         <hap nr="hap10117094">Juniorprof. Czelk</hap>
         <hap nr="hap10117097">Prof. Rudkowski</hap>
         <hap nr="hap10117098">Prof. Hailbronner</hap>
