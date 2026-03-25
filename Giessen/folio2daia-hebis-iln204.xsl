@@ -691,6 +691,7 @@
             <c>ILN204/CG/ZP2/Freihand</c>
             <n xml:lang="de">ZwBibl. im Phil. II F</n>
             <url>https://www.uni-giessen.de/ub/de/ueber-uns/standorte/ub-db/bik?bik=009</url>
+	    <campus>Magazin</campus>
         </e>
         <e>
             <c>ILN204/CG/DezFB/Kleintier-Innere-Chirurgie</c>
