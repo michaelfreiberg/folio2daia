@@ -1381,6 +1381,11 @@
                                 <xsl:text>&lt;/a&gt;</xsl:text>
                             </t2>
                         </xsl:when>
+						<xsl:when test="current()/../effectiveLocation/code = 'ILN204/CG/ZP2/Freihand'">
+                            <t2 xml:lang="de">
+                                <xsl:text>Bereitstellungsdauer mindestens 24 Stunden</xsl:text>
+                            </t2>
+                        </xsl:when>
                         <xsl:otherwise>
                             <t2 xml:lang="de">
                                 <xsl:text>&lt;a href='https://www.uni-giessen.de/ub/de/ueber-uns/a-z/az-m/ag3-magazin'&gt;</xsl:text>                                
